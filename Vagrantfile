@@ -8,7 +8,11 @@ Vagrant.configure(2) do |config|
     vb.memory = '2048'
   end
 
-  config.vm.synced_folder './share', '/home/vagrant/share', create: true
+  config.vm.synced_folder './share', '/home/vagrant/share',
+    create: true,
+    type: 'rsync',
+    rsync__args: ['--verbose', '--archive', '--delete', '--copy-links', '--times', '-z'],
+    rsync__exclude: ['.git/', '.vagrant/', 'node_modules/']
 
   config.vm.provision 'shell', privileged: false, inline: <<-SHELL
     # change to use JAIST mirror server
