@@ -54,5 +54,8 @@ Vagrant.configure(2) do |config|
 
     # set node.js
     nodebrew use stable
+
+    # install task runner modules
+    npm install -g grunt-cli gulp-cli
   SHELL
 end
