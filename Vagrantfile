@@ -29,6 +29,12 @@ Vagrant.configure(2) do |config|
     # install Git
     sudo apt-get install --yes git
 
+    # install Vim
+    sudo apt-get install --yes vim
+
+    # set default editor
+    echo 'export EDITOR=vim' >> $HOME/.bashrc
+
     # create symlink for share
     ln -s /vagrant $HOME/share
 
